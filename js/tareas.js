@@ -1,33 +1,43 @@
-class Tareas {
-    constructor (titulo, tarea) {
+class Tarea {
+    constructor (titulo, tar) {
         this.titulo = titulo
-        this.tarea = tarea
+        this.tar = tar
     }
 } 
 
-const arrayTareas = []
+const tareas = []
 
-function mostrarTarea() {
-    arrayTareas.forEach( (tareaN)=> {
-        const tareaM = `<li id="probando">${tareaN}</li>`
+function mostrarTareas() {
+    const mostrar = document.querySelector("div")
+    mostrar.innerHTML = ""
+
+    tareas.forEach( (tareaN)=> {
+        const tareaM = `<li id="probando"><b>${tareaN.titulo}:</b> ${tareaN.tar} </li>`
         
-        document.getElementById("lista").innerHTML += tareaM
+        mostrar.innerHTML += tareaM
     });
+}
+
+function buscarTareas() {
+    const buscar = prompt("Ingrese la palabra que desea buscar:")
+    const resultado = tareas.find((Tarea) => Tarea.tar.includes(buscar))
+    if (resultado !== undefined) {
+        alert(resultado)
+    }
 }
 
 function nuevaTarea() {
     let titulo = prompt("Ingrese el título para su tarea:")
-    let tarea = prompt("Ingrese una tarea:")
+    let tar = prompt("Ingrese una tarea:")
     
-    if (titulo == "" || tarea == "") {
+    if (titulo == "" || tar == "") {
         alert("Datos inválidos. Recarga y vuelve a intentar.")
     }
 
-    let tareaN = new Tareas(titulo, tarea)
-    let obj = JSON.stringify(tareaN)
+    let tareaN = new Tarea(titulo, tar)
 
-    arrayTareas.push(obj)
+    tareas.push(tareaN)
 
-    mostrarTarea()
+    mostrarTareas()
 }
 
