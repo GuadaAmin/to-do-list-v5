@@ -45,10 +45,3 @@ btnNuevo.addEventListener("click", () => {
 
     mostrarTareas()
 })
-
-function terminada() {
-    let tareaTerminada = document.querySelector(li)
-    tareaTerminada.addEventListener("click", () => {
-        li.class = "terminada"
-})
-}
