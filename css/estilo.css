@@ -23,6 +23,16 @@ button {
     margin-bottom: 1rem;
 }
 
-ul {
-    margin: 1rem;
+.contenedor {
+    display: block;
 }
+
+input {
+    margin: .3rem;
+}
+
+input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+    color: red;
+  } 
+

@@ -12,21 +12,26 @@ function mostrarTareas() {
     mostrar.innerHTML = ""
 
     tareas.forEach( (tareaN)=> {
-        const tareaM = `<li id="probando"><b>${tareaN.titulo}:</b> ${tareaN.tar} </li>`
+        const tareaM = `<div class="elemento">
+        <input type="checkbox" for="lista">
+        <label for="lista"><b>${tareaN.titulo}:</b> ${tareaN.tar}</label>
+        </div>`
         
         mostrar.innerHTML += tareaM
     });
 }
 
-function buscarTareas() {
+let btnBuscar = document.getElementById("buscar")
+btnBuscar.addEventListener("click", () => {
     const buscar = prompt("Ingrese la palabra que desea buscar:")
     const resultado = tareas.find((Tarea) => Tarea.tar.includes(buscar))
     if (resultado !== undefined) {
-        alert(resultado)
+        alert(resultado.tar)
     }
-}
+})
 
-function nuevaTarea() {
+let btnNuevo = document.getElementById("nuevo")
+btnNuevo.addEventListener("click", () => {
     let titulo = prompt("Ingrese el título para su tarea:")
     let tar = prompt("Ingrese una tarea:")
     
@@ -39,5 +44,11 @@ function nuevaTarea() {
     tareas.push(tareaN)
 
     mostrarTareas()
-}
+})
 
+function terminada() {
+    let tareaTerminada = document.querySelector(li)
+    tareaTerminada.addEventListener("click", () => {
+        li.class = "terminada"
+})
+}
