@@ -23,6 +23,10 @@ button {
     margin-bottom: 1rem;
 }
 
+#botonbuscar {
+    margin: .5rem;
+}
+
 .contenedor {
     display: block;
 }

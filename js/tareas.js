@@ -1,47 +1,70 @@
 class Tarea {
-    constructor (titulo, tar) {
-        this.titulo = titulo
-        this.tar = tar
-    }
-} 
-
-const tareas = []
-
-function mostrarTareas() {
-    const mostrar = document.querySelector("div")
-    mostrar.innerHTML = ""
-
-    tareas.forEach( (tareaN)=> {
-        const tareaM = `<div class="elemento">
-        <input type="checkbox" for="lista">
-        <label for="lista"><b>${tareaN.titulo}:</b> ${tareaN.tar}</label>
-        </div>`
-        
-        mostrar.innerHTML += tareaM
-    });
+  constructor(titulo, tar) {
+    this.titulo = titulo;
+    this.tar = tar;
+  }
 }
 
-let btnBuscar = document.getElementById("buscar")
+const tareas = [];
+
+function mostrarTareas() {
+  const mostrar = document.querySelector("#contenedor");
+  mostrar.innerHTML = "";
+
+  tareas.forEach((tareaN) => {
+    const tareaM = `<div class="elemento">
+        <input type="checkbox" for="lista">
+        <label for="lista"><b>${tareaN.titulo}:</b> ${tareaN.tar}</label>
+        </div>`;
+
+    mostrar.innerHTML += tareaM;
+  });
+}
+
+function mostrarResultadoBuscar() {
+    const resultadoBuscarhtml = document.querySelector("#boxResultados");
+
+    const resultadoBuscar = `<ul><li> ${resultadoBusqueda.tar} </li></ul>`;
+    resultadoBuscarhtml.innerHTML += resultadoBuscar;
+}
+
+let btnBuscar = document.getElementById("buscar");
 btnBuscar.addEventListener("click", () => {
-    const buscar = prompt("Ingrese la palabra que desea buscar:")
-    const resultado = tareas.find((Tarea) => Tarea.tar.includes(buscar))
-    if (resultado !== undefined) {
-        alert(resultado.tar)
-    }
-})
+  const buscarhtml = document.querySelector("#textbuscar");
 
-let btnNuevo = document.getElementById("nuevo")
+  const buscar =
+    `<textarea id="aBuscar" placeholder="Buscar un elemento"></textarea>
+    <button id="botonBuscar">Buscar</button>
+    <div id="boxResultados"></div>`;
+  buscarhtml.innerHTML += buscar;
+
+  let botonBuscar = document.getElementById("botonBuscar");
+  botonBuscar.addEventListener("click", () => {
+    const inputBuscar = document.getElementById("aBuscar").value;
+    const resultadoBusqueda = tareas.find((Tarea) =>
+      Tarea.tar.includes(inputBuscar)
+    );
+    mostrarResultadoBuscar();
+  });
+});
+
+let btnNuevo = document.getElementById("nuevo");
 btnNuevo.addEventListener("click", () => {
-    let titulo = prompt("Ingrese el título para su tarea:")
-    let tar = prompt("Ingrese una tarea:")
-    
-    if (titulo == "" || tar == "") {
-        alert("Datos inválidos. Recarga y vuelve a intentar.")
-    }
+  const nuevohtml = document.querySelector("#textnuevo");
 
-    let tareaN = new Tarea(titulo, tar)
+  const nuevo =
+    `<textarea id="inputTitulo" placeholder="Ingrese un título para su tarea"></textarea>
+    <textarea id="inputTar" placeholder="Ingrese su nueva tarea"></textarea>
+    <button id="botonAnadir">Añadir</button>`;
+  nuevohtml.innerHTML += nuevo;
 
-    tareas.push(tareaN)
+  let botonAnadir = document.getElementById("botonAnadir");
+  botonAnadir.addEventListener("click", () => {
+    const titulo = document.getElementById("inputTitulo").value;
+    const tar = document.getElementById("inputTar").value;
 
-    mostrarTareas()
-})
+    let tareaN = new Tarea(titulo, tar);
+    tareas.push(tareaN);
+    mostrarTareas();
+  });
+});
