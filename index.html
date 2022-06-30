@@ -4,16 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9104d7015d.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./css/estilo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@600&family=Titan+One&display=swap"   rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="icon" href="./imagenes/favicon.jpg">
+    <script defer src="./js/main.js"></script>
+    <script defer src="./js/funciones.js"></script>
+    <script defer src="./js/objetos.js"></script>
     <title>To-do list</title>
 </head>
 <body>
-    <h1>To-do list</h1>
-    <button id="nuevo" class="botones">Nueva tarea</button>
-    <button id="buscar" class="botones">Buscar tarea</button>
-    <div id="textbuscar"></div>
-    <div id="textnuevo"></div>
-    <div id="contenedor"></div>
-    <script src="./js/tareas.js"></script>
+    <div id="contenedorGeneral">
+        <div id="contenedorHijo">
+            <h1>To-do list</h1>
+            <div id="textBuscar">
+                <textarea id="aBuscar" placeholder="Busca una tarea"></textarea>
+                <button id="botonBuscar"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <div id="boxResultados"></div>
+            </div>
+            <div id="textNuevo">
+                <textarea id="inputTitulo" class="titulo" placeholder="Ingrese un título para su tarea"></textarea>
+                <textarea id="inputTar" placeholder="Ingrese su nueva tarea"></textarea>
+                <button id="botonAnadir">Añadir</button>
+            </div>
+            <div id="contenedorTareas"></div>
+        </div>
+    </div>
 </body>
 </html>
