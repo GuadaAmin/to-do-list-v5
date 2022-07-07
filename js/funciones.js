@@ -1,19 +1,31 @@
+const alertafire = () => {
+  Swal.fire({
+    icon: 'error',
+    title: '¡Error!',
+    text: 'Completa todo los datos',
+  })
+}
+
 const mostrar = document.querySelector("#contenedorTareas");
 
 const mostrarTareas = () => {
   mostrar.innerHTML = "<h3>Tareas:</h3>";
 
   tareas.forEach((tareaN) => {
-    const tareaM = 
-        `<div class="elemento">
-        <input type="checkbox" for="lista" class="checkbox">
-        <label for="lista" class="animate__animated animate__fadeInUp"><b>${tareaN.titulo}:</b> ${tareaN.tar}</label>
-        </div>`;
+    const tituloNuevo = tareaN.titulo || alertafire()
+    const tareaNueva = tareaN.tar || alertafire()
+    if (tituloNuevo !== undefined && tareaNueva !== undefined) {
+      const tareaM = 
+      `<div class="elemento">
+      <input type="checkbox" for="lista" class="checkbox">
+      <label for="lista" class="animate__animated animate__fadeInUp"><b>${tituloNuevo}:</b> ${tareaNueva}</label>
+      </div>` 
 
-    mostrar.innerHTML += tareaM;
+      mostrar.innerHTML += tareaM;
+    }
     document.querySelector("#inputTitulo").value = "";
     document.querySelector("#inputTar").value = "";
-  });
+  }); 
 }
 
 const mostrarResultadoBuscar = () => {
@@ -44,12 +56,10 @@ const mostrarResultadoBuscar = () => {
 }
 
 const guardarTareas = () => {
-  if (tareas.length > 0) {
-      localStorage.setItem("tareas", JSON.stringify(tareas));
-  }
+  tareas.length > 0 && localStorage.setItem("tareas", JSON.stringify(tareas));
 }
 
-const recuperarTareas= () =>  {
+const recuperarTareas = () =>  {
   tareasR = JSON.parse(localStorage.getItem("tareas"));
   const recuperarTitulo = document.createElement("h3");
   recuperarTitulo.innerText = "Tareas:";
