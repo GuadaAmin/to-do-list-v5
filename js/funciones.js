@@ -36,18 +36,18 @@ const mostrarResultadoBuscar = () => {
   const resultadoBusquedaTar = tareas.find((Tarea) => Tarea.tar.includes(inputBuscar));
   const resultadoBusquedaTitulo = tareas.find((Tarea) => Tarea.titulo.includes(inputBuscar));
 
-  if (tareas.find((Tarea) => Tarea.tar.includes(inputBuscar))) {
+  if (tareas.find((Tarea) => Tarea.titulo.includes(inputBuscar))) {
+    const resultadoBuscarTitulo = 
+    `<ul class="animate__animated animate__fadeInUp">
+    <li>${resultadoBusquedaTitulo.titulo}: ${resultadoBusquedaTitulo.tar}</li>
+    </ul>`;
+    resultadoBuscarhtml.innerHTML += resultadoBuscarTitulo;   
+  } else if (tareas.find((Tarea) => Tarea.tar.includes(inputBuscar))) {
     const resultadoBuscarTar = 
     `<ul class="animate__animated animate__fadeInUp">
     <li>${resultadoBusquedaTar.titulo}: ${resultadoBusquedaTar.tar}</li>
     </ul>`;
     resultadoBuscarhtml.innerHTML += resultadoBuscarTar;
-  } else if (tareas.find((Tarea) => Tarea.titulo.includes(inputBuscar))) {
-    const resultadoBuscarTitulo = 
-    `<ul class="animate__animated animate__fadeInUp">
-    <li>${resultadoBusquedaTitulo.titulo}: ${resultadoBusquedaTitulo.tar}</li>
-    </ul>`;
-    resultadoBuscarhtml.innerHTML += resultadoBuscarTitulo;
   } else {
     resultadoBuscarhtml.innerHTML = `<p class="animate__animated animate__fadeInUp">No hay coincidencias</p>`;
   }
