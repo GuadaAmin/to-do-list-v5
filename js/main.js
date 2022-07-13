@@ -1,3 +1,5 @@
+  const tareas = [];
+
 obtenerIdentificador()
 
 let botonBuscar = document.querySelector("#botonBuscar");
@@ -12,16 +14,16 @@ botonAnadir.addEventListener("click", () => {
   if (titulo !== "" || tar !== "") {
     tareas.push(tareaN);
   } 
-  guardarTareas()
+  guardarTareas();
   mostrarTareas();
 });
 
 recuperarTareas()
 
-// const checked = document.querySelector(".checkbox").checked
+let check = document.querySelector(".checkbox")
+check.addEventListener("onchange", () => {
+  check.remove();
+  guardarTareas();
+})
 
-// checkbox.addEventListener("click", () => {
-//   if (checked) {
-//     eliminarTarea()
-//   }
-// })
+

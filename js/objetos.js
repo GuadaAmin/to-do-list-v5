@@ -4,6 +4,3 @@ class Tarea {
       this.tar = tar;
     }
 }
-  
-const tareas = [];
-  

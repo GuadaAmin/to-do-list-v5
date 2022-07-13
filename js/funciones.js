@@ -14,7 +14,7 @@ const catchfire = () => {
   })
 }
 
-const URL = "./usuarios.json";
+const URL = "js/usuarios.json";
 
 const identificador = (info) => {
   const {nombre, apellido} = info
@@ -111,7 +111,7 @@ const recuperarTareas = () =>  {
 }
 
 // const eliminarTarea = () => {
-//   let aEliminar = document.querySelector("input[type:'checkbox']:checked"); 
+//   let aEliminar = document.querySelector(".checkbox"); 
 //   aEliminar.remove();
 //   item = tareas.indexOf(aEliminar.innerText);
 //   if (item >= 0) {
