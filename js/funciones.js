@@ -6,6 +6,36 @@ const alertafire = () => {
   })
 }
 
+const catchfire = () => {
+  Swal.fire({
+    icon: 'error',
+    title: '¡Error!',
+    text: 'No se pudo reconocer tu identidad',
+  })
+}
+
+const URL = "./usuarios.json";
+
+const identificador = (info) => {
+  const {nombre, apellido} = info
+  const usuario = document.querySelector("#contenedorUsuario");
+  const mostrarNombre = `<p>De ${nombre} ${apellido}</p>;`
+  usuario.innerHTML += mostrarNombre;
+}
+
+const obtenerIdentificador = (URL)=> {
+  fetch(URL)
+  .then((response) => response.json())
+  .then((data) => {
+    for (info of data) {
+      identificador()
+    }
+  })
+  .catch(() => {
+    catchfire()
+  })
+}
+
 const mostrar = document.querySelector("#contenedorTareas");
 
 const mostrarTareas = () => {

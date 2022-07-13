@@ -54,6 +54,12 @@ button {
     border-radius: 10%;
 }
 
+#contenedorUsuario {
+    display: block;
+    margin-bottom: 1rem;
+    background-color: red;
+}
+
 #contenedorTareas {
     display: block;
 }

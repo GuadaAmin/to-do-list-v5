@@ -1,3 +1,5 @@
+obtenerIdentificador()
+
 let botonBuscar = document.querySelector("#botonBuscar");
 botonBuscar.addEventListener("click", () => mostrarResultadoBuscar());
 
